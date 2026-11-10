@@ -1,0 +1,18 @@
+# Site statique : aucun build, le dossier est publié tel quel.
+[build]
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Le catalogue doit toujours être relu à jour après un redéploiement.
+[[headers]]
+  for = "/catalog.json"
+  [headers.values]
+    Cache-Control = "no-cache"
